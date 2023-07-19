@@ -1,0 +1,91 @@
+\usepackage{amsfonts}
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{amscd}
+\usepackage[latin2,utf8]{inputenc}
+\usepackage{t1enc}
+\usepackage[mathscr]{eucal}
+\usepackage{indentfirst}
+\usepackage{graphicx}
+\usepackage{graphics}
+\usepackage{pict2e}
+\usepackage{epic}
+\numberwithin{equation}{section}
+\usepackage{enumitem}
+%\usepackage{leftidx}
+\usepackage[margin=4cm]{geometry}
+\usepackage{epstopdf}
+\usepackage{color}
+\usepackage{dsfont}
+\usepackage{pgfplots}
+\usepackage{tikz}
+\usepackage{float}
+\usepackage{url,hyperref}
+\usepackage{tcolorbox}
+\tcbuselibrary{skins,breakable}
+\usetikzlibrary{shadings,shadows}
+
+
+ \def\numset#1{{\\mathbb #1}}
+
+\theoremstyle{plain}
+\newtheorem{Th}{Theorem}[section]
+\newtheorem{Lemma}[Th]{Lemma}
+%\newtheorem{Remark}[Th]{Remark}
+\newtheorem{Cor}[Th]{Corollary}
+\newtheorem{Prop}[Th]{Proposition}
+
+\theoremstyle{definition}
+\newtheorem{Def}[Th]{Definition}
+\newtheorem{Conj}[Th]{Conjecture}
+\newtheorem{Rem}[Th]{Remark}
+\newtheorem{?}[Th]{Problem}
+\newtheorem{Ex}[Th]{Example}
+
+\providecommand{\vol}[1]{\left\lvert#1\right\rvert}
+\providecommand{\num}[1]{\nu\left(#1\right)}
+\providecommand{\abs}[1]{\left\lvert#1\right\rvert}
+\providecommand{\norm}[1]{\left\lVert#1\right\rVert}
+\providecommand{\ang}[1]{\left\langle#1\right\rangle}
+\providecommand{\parenth}[1]{\left(#1\right)}
+\providecommand{\conv}[1]{\mathop{\rm conv}\{#1\}}
+
+\newcommand{\im}{\operatorname{im}}
+\newcommand{\Hom}{{\rm{Hom}}}
+\newcommand{\diam}{{\rm{diam}}}
+\newcommand{\ovl}{\overline}
+\newcommand{\N}{\mathbb{N}} %%
+\newcommand{\Z}{\mathbb{Z}} %%
+\newcommand{\Q}{\mathbb{Q}} %%
+\newcommand{\R}{\mathbb{R}} %%
+\newcommand{\I}{\mathbb{I}} %%
+\newcommand{\C}{\mathbb{C}} %%
+\newcommand{\K}{\mathbb{K}} %%
+\newcommand{\D}{\mathbb{D}} %%
+\newcommand{\B}{\mathbb{B}} %%
+\newcommand{\T}{\mathbb{T}} %%
+\newcommand{\E}{\mathbb{E}} %%
+\newcommand{\Pro}{\mathbb{P}} %%
+\newcommand{\Sp}{\mathbb{S}} %%
+\newcommand*{\bigchi}{\mbox{\Large$\chi$}} %%
+\newcommand{\restr}[1]{\hspace{-0.3em}\mid_{#1}}
+%\newcommand{\restrr}[1]{\hspace{-0.1em}\mid_{#1}}
+%\newcommand*{\ind}{\mbox{\Large$\mathds{1}$}} %%
+\newcommand*{\ind}{\mbox{$\mathds{1}$}} %%
+%\setlength\parindent{0pt}
+%\setenumerate{itemsep=.3em}
+
+%\newcounter{ans}
+%\newcommand{\ans}{%
+%	\stepcounter{ans}%
+%	\theans}
+\pgfplotsset{compat=1.16}
+
+\newenvironment{myblock}[1]{%
+	\tcolorbox[beamer,%
+	noparskip,breakable,
+	%colback=lightblue,colframe=DarkBlue,%
+	%colbacklower=blue,%
+	title=#1]}%
+{\endtcolorbox}
+

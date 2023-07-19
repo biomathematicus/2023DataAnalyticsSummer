@@ -1,0 +1,217 @@
+\documentclass[12pt,reqno]{amsart}
+\newcommand{\vs}{\vspace*{0.1in}\noindent}
+\input{config}
+\begin{document}
+	
+	%\setlength{\abovedisplayskip}{1em}
+	%\setlength{\belowdisplayskip}{1em}
+		
+	\title[Report Title]{Report Title}	
+	\author[Dr. Juan B. Gutiérrez, Ph.D.]{Dr. Juan B. Gutiérrez, Ph.D.}	
+	\address{GUVO Solutions LLC}	
+	\email{juan@guvosolutions.com}	
+	\urladdr{https://www.guvosolutions.com} 	
+	
+
+	%\keywords{sample paper}
+	
+	%\begin{abstract}{Motivation}
+	%\end{abstract}
+	
+	\maketitle
+	
+	The present expert witness report has been prepared by Dr. Juan B. Gutiérrez, Ph.D., engineer and mathematician, for the XXX Law Firm  in reference to [litigation name/reference]. This report refers to a case litigated under Texas law. Nevertheless, the report has been structured according to the standard of Federal Rules of Civil Procedure 26(a)(2)(B), ``\textit{Witnesses Who Must Provide a Written Report}.''
+		
+	{\scshape \small \tableofcontents}
+	
+	%======================================
+	\section{A complete statement of every opinion to be expressed by the expert, as well as the basis for each opinion}
+	%======================================
+	%-------------------------------------
+	\vs
+	\begin{myblock}{Expert Opinion \#1}
+		There are peculiarities in ...
+	\end{myblock}
+	\vs
+	%-------------------------------------
+	
+	The interrogation reports for ...
+		
+
+	%-------------------------------------
+	\vs
+	\begin{myblock}{Expert Opinion \#2}
+		The probability that YYY  is extremely low.  
+	\end{myblock}
+	\vs
+	%-------------------------------------
+ 
+
+On ``System 6000TM Reference Manual'' \cite{SAFLOCK6000}, Section 4, page 4 of 16, it is stated that ``\textit{The SAFLOK lock contains a clock crystal that maintains actual date and time.}'' % From the manual, the locks have a clock crystal. It is therefore essential to ascertain the type of crystal the Saflok lock has. 
+%The unadjusted time is the same on both locks, but all Open events are on a different time. 
+A clock crystal uses the mechanical resonance of a vibrating crystal of piezoelectric material to create an electrical signal with a constant frequency. The accuracy of a clock crystal is defined in terms of parts per million (ppm). A typical crystal used in electronic circuits with an operating temperature from -10 to 60$^{\circ}$C, has a  frequency tolerance of $\pm$6 to $\pm$20 ppm, or 0.0006\% to 0.0020\%, or $6 \times 10^{-6}$ to $2 \times 10^{-5}$. Given that in a day there are $24 \times 60 \times 60 = 86,400$ seconds, this range of tolerance translates into a loss of accuracy of 0.5 to 1.7 seconds per day, or 15 to 51 seconds per month \cite{vig1992introduction, lombardi2008accuracy}.  Taking the average of this duration, 30 months, and given the expected frequency tolerance, the drift from global time would be 30 months $\times$ 15 seconds/month = 450 seconds = 7.5 minutes to  30 months $\times$ 52 seconds/month = 1560 seconds = 26 minutes.
+
+The question is now: \textit{What is the probability that two clocks with the same frequency tolerance reach the exact local time having started from the same global time reference at different arbitrary points in time}. 
+
+To answer this question, there are several assumptions: 
+
+\begin{enumerate}
+	\item The ZZZ has QQQ rooms using the same lock system. 
+	\item The need to change batteries in a lock is characterized by a uniform distribution, that is, the probability that a battery has to be changed is the same for all locks. This assumption is true if the locks have been in place more than 3 years. The fact sheets of locks by the same manufacturer indicate the need to change batteries every 24 to 36 months \cite{saflok770Series, saflok790Series, saflokQuantumPixel, saflokMTRFID,  saflokQuantumIV, saflokRTPlus}.
+\end{enumerate}
+
+
+Bayes Theorem allows us to calculate the probability of an event when
+the universe can be partitioned into two or more disjoint parts.
+
+\[
+    \Pr[E] = \sum_{i=1}^n \Pr[E | A_i] \Pr[A_i]
+\]
+Some times this statement is known as the \emph{law of total
+  probability}.
+The law of total probability says that the probability of an event $E$
+  is a weighted average of the conditional probability of $E$ given
+  that even t $A_i$ has occurred over all the total possibilities of
+  $A_i$.
+
+
+This formula can be helpful if it is difficult to calculate \( \Pr[E]
+\) directly, but it can be computed with additional information about
+\( A_i \).
+
+
+If \( A_1, A_2, \dots A_n \) form a  partition of the sample space and
+$E$ is an event of the sample space then \emph{Bayes Theorem} says
+\[
+     \Pr[A_i | E]
+     = \frac{ \Pr[ E | A_i] \Pr[A_i]}{\sum_{i=1}^n \Pr[E | A_i]
+     \Pr[A_i]}
+\]
+
+We can define multiple events to compute the probabilities of  occurrence: 
+
+\begin{itemize}
+	\item[A.] Probability that a lock requires battery change. $A = $
+	\item[B.] Conditional probability that the clock is reset during a battery change. $B = $
+	\item[C.] Conditional probability that Lock 1 drifts 3 minutes from global time after being reset. $C=$
+	\item[D.] Conditional probability that Lock 2 drifts 10 minutes from global time after being reset. $D=$
+	\item[E.] Total probability that two locks have the exact same local time, while drifting 3 and 10 minutes away from global time. $E=$
+\end{itemize}
+
+	
+	%-------------------------------------
+	\vs
+	\begin{myblock}{Expert Opinion \#3}
+		The probability that XXXX is extremely low.  
+	\end{myblock}
+	\vs
+	%-------------------------------------
+		
+The time needed to clean an occupied room is greater than 20 minutes. Data collected in hotels, as shown in Table \ref{tab:Hotels}, show a that the average time to clean a room is over 20 minutes \cite{malony2011analysis}. This is consistent with observations outside the US \cite{kadry2017simulation, mehrez2000work}. 
+
+\begin{table}
+	\begin{center}
+		\begin{tabular}{||l |c |c |c||} 
+		 \hline
+		 Author 														& Hotel 						& Cleaning (min) 					& Rooms/day \\ [0.5ex] 
+		 \hline\hline
+		 Falbo, 1999 \cite{falbo1999room} 	& 5 hotels in USA 	& 20,18-20,20-25,27,20 	& N/A \\ 
+		 \hline
+		 Mehrez \& Haddad, 2000 \cite{mehrez2000work}	& 1 hotel in Israel & 24.5 (stayover)		& 15.3 \\
+																						&										& 43 (checkout)			&				\\
+		 \hline
+		 Krause et al., 2005 \cite{krause2005physical} & 5 hotels in USA & N/A 											& 14.5 \\
+		 \hline
+		 Sherman, 2011 \cite{sherman2011beyond} & 2 hotels is USA & N/A & 12 \\
+		 \hline
+		\end{tabular}
+	\end{center}
+	\caption{Peer-reviewed studies regarding the time needed to clean occupied rooms in the hospitality industry.}
+	\label{tab:Hotels}
+\end{table}
+
+
+The following calculation shows that the probability of XXX is less than $1\times 10^{-14}$. To put it in perspective, 
+\begin{itemize}
+	\item This probability is smaller than the probability that a 22 LR rifle (diameter 0.2255", range 1 mi) is tossed upward spinning, fires a bullet mid air, and hits a target of size 1/4" randomly located within a radius of a mile.  
+	\item This probability is smaller than the probability of being attacked by a bear (one in 2.1 million) while at the same time being hit by lightning (one in a million). 
+\end{itemize}
+
+
+\begin{table}
+	\begin{center}
+		\begin{tabular}{||l |c |c |c||} 
+		 \hline
+		 Author 														& Hotel 						& Cleaning (min) 					& Rooms/day \\ [0.5ex] 
+		 \hline\hline
+		 Falbo, 1999 \cite{falbo1999room} 	& 5 hotels in USA 	& 20,18-20,20-25,27,20 	& N/A \\ 
+		 \hline
+		 Mehrez \& Haddad, 2000 \cite{mehrez2000work}	& 1 hotel in Israel & 24.5 (stayover)		& 15.3 \\
+																						&										& 43 (checkout)			&				\\
+		 \hline
+		 Krause et al., 2005 \cite{krause2005physical} & 5 hotels in USA & N/A 											& 14.5 \\
+		 \hline
+		 Sherman, 2011 \cite{sherman2011beyond} & 2 hotels is USA & N/A & 12 \\
+		 \hline
+		\end{tabular}
+	\end{center}
+	\caption{Peer-reviewed studies regarding the time needed to clean occupied rooms in the hospitality industry.}
+	\label{tab:Hotels}
+\end{table}
+		
+	
+	%======================================
+	\section{The data, facts, and/or information the expert took into account in rendering the opinion(s)}
+	%======================================
+	\bibliographystyle{plain}
+	\bibliography{biblio}
+
+	
+	%======================================
+	\section{A summary of the expert witness’s qualifications}
+	%======================================
+	Dr. Gutiérrez holds a B.Eng. in Civil Engineering (1996) and a Ph.D. in Mathematics (2009). Dr. Gutiérrez has experience in the oil industry as an instrumentation engineer, as well as a systems architect for enterprise-grade information systems in government and industry. In the past decade, Dr. Gutiérrez has been a consultant for multinational clients in the area of data management and analysis (US, Canada, Netherlands).  Currently, Dr. Gutiérrez is Professor of Mathematics and Chair of the Department of Mathematics at the University of Texas at San Antonio.  
+	
+	Dr. Gutiérrez's area of expertise is in data analysis. He has been funded to conduct research by the National Science Foundation (NSF), the National Institutes of Health (NIH), and the  Defense Advanced Research Projects Agency (DARPA). He teaches graduate-level Data Analytics and has an extensive publication record in this area (over 1,800 citations, over 50 peer-reviewed manuscripts). 
+	
+	A list of publications by Dr. Gutiérrez is available at \url{https://scholar.google.com/citations?user=6zyMZlgAAAAJ&hl=en}
+	
+	%======================================
+	\section{Compensation}
+	%======================================
+	Dr. Gutiérrez entered a consulting agreement with the XXX Law Firm at a rate of \$350/hour.
+	
+	%======================================
+	\section{A list of any other cases in which the expert has testified over the past four years}
+	%======================================
+	Dr. Gutiérrez has been an expert witness in other instances in the past 4 years: 
+	
+	\begin{itemize}
+		\item Case...
+	\end{itemize}
+
+
+
+	
+
+\vspace{0.5em}
+	
+
+
+\vspace{0.5em}
+
+	
+	%\newpage\phantom{blabla}
+	
+	%\newpage
+	%
+	% BIBLIOGRAPHY
+	%
+	
+	%\addcontentsline{toc}{section}{References} 
+		
+	
+\end{document}
+
+
+
