@@ -1,26 +1,4 @@
 import numpy as np
-from matplotlib import pyplot as plt
-
-def main():
-    #dummy data for initial testing
-    n = 20
-    m = 100
-    A = np.random.rand(m,n)
-    B = np.random.rand(m,n) + 0.2
-    X = np.concatenate((A, B), axis=0)
-    x, y, z = PCA(X)
-    
-    fig = plt.figure(1)
-    fig.clf()
-    plt.scatter(x[0:m-1],y[0:m-1])
-    plt.scatter(x[m:-1],y[m:-1])
-    plt.show()
-
-    fig = plt.figure(2)
-    ax = fig.add_subplot(111, projection='3d')
-    ax.scatter(x[0:m-1],y[0:m-1], z[0:m-1])
-    ax.scatter(x[m:-1],y[m:-1], z[m:-1])
-    plt.show()
 
 def PCA(X):
     #we find Xbar and extract values of dimensions from X
@@ -50,6 +28,3 @@ def PCA(X):
     
     #return the projection of X onto 2-D
     return x, y, z
-
-if __name__ == "__main__":
-    main()
