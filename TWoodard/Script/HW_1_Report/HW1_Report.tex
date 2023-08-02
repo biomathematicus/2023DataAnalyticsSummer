@@ -1,0 +1,137 @@
+\documentclass[10pt]{article}
+
+
+\usepackage[shortlabels]{enumitem}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{permute}
+\usepackage{multirow}
+\usepackage{array}
+\usepackage{xcolor}
+\usepackage{colortbl}
+\usepackage{enumitem}
+\usepackage{tikz}
+\usepackage[scale=2]{ccicons}
+\usepackage{newlfont}
+\usepackage{setspace}
+\usetikzlibrary{arrows,automata,positioning}
+\usepackage{amsfonts,scalerel,graphicx}
+\usepackage{graphicx}
+\usepackage{graphicx}
+
+\newcommand{\bftab}{\fontseries{b}\selectfont}
+
+\setlength{\textheight}{10.4in}          % distance from bottom DONE
+\setlength{\oddsidemargin}{-0.2in}      % distance from left margin  DONE
+\setlength{\textwidth}{6.75in}                                 % controls right margin DONE
+\setlength{\topmargin}{-0.8in}                                  % controls top (header too)
+\setlength{\headheight}{0in} %\setlength{\headsep}{0in}
+\setlength{\parindent}{0mm}
+
+\graphicspath{E:/DataAnalysisSum23/DataProject/HW1_Report/hw_1_graphs/violinplotALL}
+\graphicspath{E:/DataAnalysisSum23/DataProject/HW1_Report/hw_1_graphs/violin04}
+\graphicspath{E:/DataAnalysisSum23/DataProject/HW1_Report/hw_1_graphs/violin05}
+\graphicspath{E:/DataAnalysisSum23/DataProject/HW1_Report/hw_1_graphs/violin06}
+\graphicspath{E:/DataAnalysisSum23/DataProject/HW1_Report/hw_1_graphs/violin07}
+\graphicspath{E:/DataAnalysisSum23/DataProject/HW1_Report/hw_1_graphs/violin08}
+\graphicspath{E:/DataAnalysisSum23/DataProject/HW1_Report/hw_1_graphs/violin09}
+\graphicspath{E:/DataAnalysisSum23/DataProject/HW1_Report/hw_1_graphs/violin10}
+\graphicspath{E:/DataAnalysisSum23/DataProject/HW1_Report/hw_1_graphs/violin11}
+\graphicspath{E:/DataAnalysisSum23/DataProject/HW1_Report/hw_1_graphs/violin12}
+\graphicspath{E:/DataAnalysisSum23/DataProject/HW1_Report/hw_1_graphs/violin13}
+\graphicspath{E:/DataAnalysisSum23/DataProject/HW1_Report/hw_1_graphs/barchartwith12}
+\graphicspath{E:/DataAnalysisSum23/DataProject/HW1_Report/hw_1_graphs/barchartwithout12}
+
+
+\title{Data Analysis: Homework One report}
+\author{Taylor Woodard}
+
+\begin{document}
+\maketitle
+\section{Preface}
+Hello Dr Gutierrez and class. please feel free to scrutinize this preliminary report as see fit. This is my first report-style homework assignment
+and it has been over five years since I have written a paper of this style. All critisism is welcome.\\
+
+Thank you!\\
+\begin{center}
+--Taylor Woodard--
+\end{center}
+\section{Introduciton}
+The goal of the intial report of the data was to sort a small subset of natality data presented in a flat flie. The flat file contained 
+1,800,103 records were presented using cp1252, a single-byte character encoding, where every integer in our string of numbers coresponded
+to a given data dictionary. The dictionary broke down the interpretation of the string of integers, such that the individual, 
+or pair, of integers in a line of data represented a specific category of information. This dictionary could be used to sort our
+data into desired categories based on the need of information or specificity.
+
+\section{Methods}
+\subsection{Sorting and Interpreting the Data}
+The Flat file is loaded into Python as a \emph{.dat} file and sorted using a small sorting algorithm to catagorize the the data. Please
+note that python uses a zero-indexing where the first term in a string of numbers starts with zero, rather than one
+First, the data is narrowed down in the first iteration of the loop using \emph{if x[11] == "1" and x[25:27] == "74" and x[52:54] == "55"} where \emph{x[11]}
+pulls the data that satisfies our first condition condition, \emph{1}, which represents residencey status. \\Next we sort the data by terms
+that satisfies our second condition, \emph{x[25:27]}, where all entries in our data equal \emph{74}. \\ Next we sort the terms by \emph{x[51:53] == "55" or x[53:55] =="55"} equals to \emph{55}.
+This condition of our sorting represents the natility data of a instances only when the child was born alive.  Please note, Python uses a slicing 
+operation, which can be read \emph{sequence[start$\_$index:stop$\_$index]} where \emph{start$\_$index} is the first term in our sequence which is to be 
+included and \emph{stop$\_$index} is the first term that will be excluded in our index. Therefore when \emph{x[25:27]} equals \emph{74} our
+Boolean values are satisfied. In this case \emph{x[25:27]} represents elements of our data that represents Residents of Texas. \\Finally, the last 
+chunk our loop sorts the data who's values satisfy \emph{x[99:101]}, who's desired values are defined as \emph{educounter$\_$years}, which 
+represents the number of years the individual spent in education, then sorted with respect to \emph{educoutner$\_$years} by terms satisfying \emph{x[62]} which represents
+the birth order of the child. The overall break down can be interpreted as, for example, "Resident of the United States, Resident of Texas,
+\emph{x} years the mother spent in school, birth order of \emph{x}"
+\subsection{Graphical Representation and interpretation of our data}
+Because the data is sorted in such a way that should imply that there is a corelation between A mother's education level verus the Birth Order of a Child.
+The purpose of selecting these two conditions was to challenge the hypothesis that the less a mother was educated, the more likely that the Birth order of 
+the child would be higher. In otherwords, a mother with less education was assumed to have a higher tendency to have more children when compared to a woman
+with more education.\\ Two types of graphs were used to display the data, given our sorting conditions: a Bar Chart and a Violin Plot.
+The Bar Chart was intended to show the spread of the data across our specified catagories. Due to the fact that it can be reasonably assumed
+that women would be more inclined to have children after graduating highschool, 12 years of education,and therefore a catagory that shows an extreme spread of data compared to the other catagories,
+a second bar chart was created where 12 years of education was omitted from the graph to show a better spread of the data across the catagories.
+The Bar Chart is set up to show the most amount of variance between the classes of data in such way that a comparison of the data between different
+values of a mother's education can be easily visulized. Because we are sorting through multiple variables that constrain the data under multiple parameters
+the Bar Chat
+A Violin Plot was used to display categorical density of birth order per specified years of education. The wider portions of the graph represent
+birth order with a higher number of our elements falling into the category of Years of Education v Birth Order. The Black Bar represents the 
+Interquartile range covering the middle 50$\%$ of our data. The goal of the Violin Plot was to try to represent the spread of our data in a clearer 
+visual with the hopes that it would make the answer of our hypothesis more obvious. 
+\section{Question Responses}
+\subsection{Question 1: Why is the date and time of birth no longer recorded}
+\subsubsection{Initial thoughts}
+When looking at the flat file of data, one might assume that the reason why time and date are no longer recorded in birth
+records would be very clear due to the number of categories that are already being recorded, as well as the vast number of children being born every years
+the reason for the change could be assumed to be that the time and date were just superfluous bits of information about the birth of the child. With hundreds, if not thousands of children 
+being born in a singlar hospital, let alone the entire country, recording the information specifically of the time of the birth would just add too many 
+unneeded complexities when recording every birth in America.
+\subsubsection{Found answer}
+Although I was unable to find any information in regards to the revision of the data processing of 1988, information was found on the CDC's website:
+\emph{(https://www.cdc.gov/nchs/nvss/revisions-of-the-us-standard-certificates-and-reports.htm)} which had detailed documents about the the reason for the changes
+in the year 2003. To quote the document, "the Working Group to Improve Data Quality had found a decline in vital statistics birth data quality associated
+with electronic registration of vital events." Which, given the state of technology at the time, as well as the rise of the era of electronic records, the revision can
+be assumed to have come the need for a lower level of complexity when due to the fact of the $\mathsf{hefty}\,_{\mathsf{hefty}\,_{\mathsf{hefty}}}$ amout of variables
+that would be required for the category of recording time alone.
+\subsection{Question 2: Why was a flat file used?}
+A Flat file was used for the simpliticy and straightfoward use when the data is paired with a clear dictionary. Also, because flat files are present in strings of integers,
+sometimes containing delimiters such as commas, the required memory to store and send is dramatically reduced when comepared to something as trivial as an excel spreadsheet.
+Furthermore, flatfiles are a nearly universal means of containing data. Because the file is so straightfoward, different coding languages as well as different methods can 
+be used to sort the data which would make sharing results of data sorting very simple. Fianlly, because of its fairly simple means of translation as well as typically requireing
+less memory, flat files can easily be used as a backup storage option.
+\subsection{Question 3: What problem occured when uploading the data into Microsoft Excel?}
+Due primarily to memory constraints, Microsoft Excel has a limit on the number of rows that can be entered into a spreadsheet, which is $1,048,576$ rows.
+And due to the fact that our given data set contained $1,800,103$, a good size portion of data was unavalible to view.
+\section{Data Questions}
+\subsection{How many Live Births occured in Texas in 1969 from mothers residing in Texas?}
+Accorting the my sorting algorithm, 53,854 live births occured in Texas in 1969.\
+\subsubsection{ Bonus question: How would you visualize births from each state with respect
+to every other state?}
+Hypothetically, if the data for all of the births in all of the states was sorted using the same method presented above, the data would have to be represented in 3 dimensions
+where our new axis represents all 50 states. If we wanted to add more conditions to our comparision, we would have to represent the data in n-dimensions where 
+$n$ is the number of dimensions that are chosen to evaluate the data.
+\subsection{Show graphically how the level of education of the mother is related to the birth
+order (1st born, second child, third, etc.)}
+\includegraphics[scale = .5]{barchartwith12}
+
+
+
+
+
+\end{document}
