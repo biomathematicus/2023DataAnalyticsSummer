@@ -45,6 +45,7 @@ Sigmoid.invDer = inverse_sigmoid_derivative
 
 Relu = Fct(relu, relu_derivative)
 Linear = Fct(linear, linear_derivative)
+Linear.inv = lambda x: x
 
 # Define Mean Squared Error loss function
 def mean_squared_error(y_true, y_pred):

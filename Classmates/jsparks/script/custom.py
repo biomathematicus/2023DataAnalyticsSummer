@@ -2,7 +2,7 @@ from defs import *
 
 # Generate random integer input matrix (30 samples, 3 categories)
 input_matrix = np.random.randint(1, 11, size=(30, 3))
-output_matrix = np.copy(input_matrix)
+output_matrix = 0.5*np.copy(input_matrix)
 
 input_min = np.min(input_matrix)
 input_scale = np.max(input_matrix) - input_min
@@ -29,10 +29,10 @@ arch = [3]
 w1 = np.random.rand(d_1,arch[0])
 b1 = np.random.rand(d_0,arch[0])
 
-# w1, residuals, _, _ = np.linalg.lstsq(input_matrix, np.vectorize(Sigmoid.inv)(output_matrix), rcond=None)
+w1, residuals, _, _ = np.linalg.lstsq(input_matrix, np.vectorize(Linear.inv)(output_matrix), rcond=None)
 # w1, residuals, _, _ = np.linalg.lstsq(input_matrix, output_matrix, rcond=None)
 b1 = np.zeros((d_0,arch[0]))
-w1 = np.eye(3, dtype='int')
+# w1 = np.eye(3, dtype='int')
 
 # print(input_matrix @ w1 + b1)
 print(np.linalg.norm(
