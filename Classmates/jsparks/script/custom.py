@@ -2,7 +2,7 @@ from defs import *
 
 # Generate random integer input matrix (30 samples, 3 categories)
 input_matrix = np.random.randint(1, 11, size=(30, 3))
-output_matrix = 0.5*np.copy(input_matrix)
+output_matrix = np.copy(input_matrix)
 
 input_min = np.min(input_matrix)
 input_scale = np.max(input_matrix) - input_min
@@ -29,12 +29,14 @@ arch = [3]
 w1 = np.random.rand(d_1,arch[0])
 b1 = np.random.rand(d_0,arch[0])
 
-w1, residuals, _, _ = np.linalg.lstsq(input_matrix, np.vectorize(Sigmoid.inv)(output_matrix), rcond=None)
+# w1, residuals, _, _ = np.linalg.lstsq(input_matrix, np.vectorize(Sigmoid.inv)(output_matrix), rcond=None)
+# w1, residuals, _, _ = np.linalg.lstsq(input_matrix, output_matrix, rcond=None)
 b1 = np.zeros((d_0,arch[0]))
+w1 = np.eye(3, dtype='int')
 
 # print(input_matrix @ w1 + b1)
 print(np.linalg.norm(
-    output_matrix - np.vectorize(Sigmoid.reg)(input_matrix @ w1 + b1)
+    output_matrix - np.vectorize(Linear.reg)(input_matrix @ w1 + b1)
 ))
 print(np.linalg.norm(np.zeros((30,3))))
 
@@ -55,7 +57,10 @@ for i in range(epochs):
     Y_pred = np.vectorize(Activ.reg)(Z)
     dC_dY_pred = Y_pred - output_matrix
     dC_dW = input_matrix.T @ (dC_dY_pred * np.vectorize(Activ.der)(Z))
+    # dC_db = np.sum(dC_dY_pred * np.vectorize(Activ.der)(Z), axis=0, keepdims=True)
+
     w1 = w1 - rate * dC_dW
+    # b1 = b1 - rate * dC_db
     if i % 10000 == 0:
         current_norm = np.linalg.norm(
             output_matrix - np.vectorize(Activ.reg)(input_matrix @ w1 + b1)
@@ -66,6 +71,7 @@ for i in range(epochs):
         print("norm limit %2.6f reached in %d epochs" % (norm_stop, i))
         break
 print(w1)
+print(output_matrix - np.vectorize(Activ.reg)(input_matrix @ w1 + b1))
 
 # dCdw=2*(np.vectorize(Sigmoid.reg)(input_matrix @ w1 + b1)).T
 # print(np.shape(2*(np.vectorize(Sigmoid.reg)(input_matrix @ w1 + b1))))
