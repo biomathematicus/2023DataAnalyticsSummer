@@ -23,7 +23,7 @@ class NeuralNetwork:
                  Activ: Fct = Relu,
                  test_size: float = 0.2,
                  params: dict = {},
-                 verbose: bool = False
+                 printEpochs: int = 0
                  ):
         self.X = X
         self.Y = Y
@@ -32,7 +32,7 @@ class NeuralNetwork:
         self.Activ = Activ
         self.layer_sizes = layer_sizes
         self.params = params
-        self.verbose = verbose
+        self.printEpochs = printEpochs
         if self.params == {}:
             self.randomize_params()
 
@@ -92,13 +92,15 @@ class NeuralNetwork:
         self.params = params_updated
 
     def model(self, epochs):
-        for i in range(epochs):
+        prev = 0
+        for i in range(1, epochs+1):
             values = self.forward_propagation(self.X_train)
             cost = self.compute_cost(values)
             grads = self.backward_propagation(values)
             self.update_params(grads)
-            if (self.verbose):
-                print('Cost at iteration ' + str(i + 1) + ' = ' + str(cost) + '\n')
+            if self.printEpochs > 0 and (i == 1 or i % self.printEpochs == 0):
+                print('Cost at iteration %d = %.6f, %.6f diff from previous' % (i, cost, cost-prev))
+                prev = cost
 
     def compute_accuracy(self):
         values_train = self.forward_propagation(self.X_train)
@@ -117,8 +119,9 @@ raw_df = pd.read_csv(data_url, sep="\s+", skiprows=22, header=None)
 data = np.hstack([raw_df.values[::2, :], raw_df.values[1::2, :2]])
 target = raw_df.values[1::2, 2]
 
-NN = NeuralNetwork(data, target, 0.03, [13, 5, 5, 1])
-NN.Activ = Sigmoid
+NN = NeuralNetwork(data, target, 0.03, [13, 5, 1])
+NN.Activ = Relu
+NN.printEpochs = 1000
 NN.model(100000)
 
 train_acc, test_acc = NN.compute_accuracy()
