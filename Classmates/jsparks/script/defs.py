@@ -19,12 +19,12 @@ class Fct:
         return self.der(x)
 
 def sigmoid(x):
-    if x > sig_max: return 1
-    if x < -sig_max: return 0
+    # if x > sig_max: return 1
+    # if x < -sig_max: return 0
     return 1 / (1 + np.exp(-x))
 
 def sigmoid_derivative(x):
-    if abs(x) > sig_max: return 0
+    # if abs(x) > sig_max: return 0
     return x * (1 - x)
 
 def inverse_sigmoid(x):
