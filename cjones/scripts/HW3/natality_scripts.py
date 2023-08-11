@@ -2,7 +2,7 @@ import psycopg2 as psy
 import numpy as np
 from matplotlib import pyplot as plt
 
-oConn = psy.connect("dbname = USA user=postgres password=LIJq3hqw%!-jc58d(.")
+oConn = psy.connect("dbname = USA user=postgres password=dataclass23")
 oCur = oConn.cursor()
 
 queryX = '''
