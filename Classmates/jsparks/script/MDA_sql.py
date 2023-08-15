@@ -68,6 +68,7 @@ def run_sql():
     global start_time
     start_time = datetime.datetime.now()
     last_time = start_time
+    print("*"*55)
     print(f'Start time: {start_time.strftime("%b %d at %H:%M:%S")}')
     print("Computing means of all data")
     run_query(f"{pop_var_from_cols} {drop_ave_tbl} {get_total_avg}")
@@ -126,25 +127,60 @@ def fetch_data(condition: str, max_rows: int, random: bool = True):
     return np.array(cur.fetchall(), dtype=np.float64)
 
 
-table_name = 'natal500k'
+# table_name = 'natal500k'
 cols = ['in_resident', 'id_sex', 'id_f_race', 'id_m_race', 'am_m_age', 'am_tot_b_order', 'am_f_age', 'am_birthweight', 'am_gestation', 'id_m_edu', 'id_f_edu', 'am_prenatal', 'am_post_full_dob', 'am_lunar_month_dob', 'days_since_1969']
 avg_tbl_name = 'temp_mld_avg_per_class'
 total_avg_name = 'temp_total_data_avg'
 # all_var_covar_name = 'temp_all_var_covar'
 condit = 'where valid is true'
 
+def run_and_store(prefix: str):
+    prepare_queries()
+    run_sql()
+    fetch_computations()
+    store_computations(prefix)
+    drop_temp_tbls()
+
 # Run 1
 
+topic = '2_class_birthweight'
+print(f"Computing for {topic}")
 classification_var = 'am_birthweight'
 class_1_condit = f'{condit} and {classification_var}<2500'
 class_2_condit = f'{condit} and {classification_var}>=2500'
 conditions = [class_1_condit, class_2_condit]
+run_and_store(topic)
 
-prepare_queries()
-drop_temp_tbls()
-run_sql()
-fetch_computations()
-store_computations('2_class_birthweight')
+# Run 2
+
+topic = '2_class_sex'
+print(f"Computing for {topic}")
+classification_var = 'id_sex'
+class_1_condit = f'{condit} and {classification_var}=1'
+class_2_condit = f'{condit} and {classification_var}=2'
+conditions = [class_1_condit, class_2_condit]
+run_and_store(topic)
+
+# Run 3
+
+topic = '7_class_birthweight'
+print(f"Computing for {topic}")
+classification_var = 'am_birthweight'
+class_1_condit = f'{condit} and {classification_var} < 1250'
+class_2_condit = f'{condit} and {classification_var} between 1250 and 2499'
+class_3_condit = f'{condit} and {classification_var} between 2500 and 3749'
+class_4_condit = f'{condit} and {classification_var} between 3750 and 4999'
+class_5_condit = f'{condit} and {classification_var} between 5000 and 6249'
+class_6_condit = f'{condit} and {classification_var} between 6250 and 7499'
+class_7_condit = f'{condit} and {classification_var} > 7499'
+conditions = [class_1_condit, class_2_condit, class_3_condit, class_4_condit,
+              class_5_condit, class_6_condit, class_7_condit]
+run_and_store(topic)
+
+
+
+
+# Visualization
 
 
 # print(fetch_data(conditions[0], 20, False))
