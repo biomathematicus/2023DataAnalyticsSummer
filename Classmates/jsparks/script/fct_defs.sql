@@ -21,7 +21,7 @@ BEGIN
     FROM unnest(cols) AS col;
 
     IF avgs IS NULL OR array_length(avgs, 1) IS NULL THEN
-        EXECUTE format('SELECT array[%s] FROM %I %s', col_avg_sel, data_tbl_name, condit) INTO avgs;
+        EXECUTE format('SELECT array[%s] FROM %s %s', col_avg_sel, data_tbl_name, condit) INTO avgs;
 	END IF;
 	SELECT string_agg(col::text || ' numeric', ', ') INTO col_decls FROM unnest(cols) AS col;
 	EXECUTE format('SELECT EXISTS (SELECT 1 FROM information_schema.tables WHERE table_name = %L)', avg_tbl_name)
@@ -72,10 +72,10 @@ BEGIN
     EXECUTE format('ALTER TABLE %I ADD COLUMN %I serial PRIMARY KEY', covar_tbl_name, pk_name);
 
     FOR i IN 1..array_length(cols, 1) LOOP
-		EXECUTE format('SELECT %I FROM %I %s LIMIT 1', cols[i], avg_tbl_name, avg_condit) INTO a_mean;
+		EXECUTE format('SELECT %I FROM %s %s LIMIT 1', cols[i], avg_tbl_name, avg_condit) INTO a_mean;
         FOR j IN i..array_length(cols, 1) LOOP
-			EXECUTE format('SELECT %I FROM %I %s LIMIT 1', cols[j], avg_tbl_name, avg_condit) INTO b_mean;
-			EXECUTE format('SELECT SUM((%I - $1) * (%I - $2)) FROM %I %s',
+			EXECUTE format('SELECT %I FROM %s %s LIMIT 1', cols[j], avg_tbl_name, avg_condit) INTO b_mean;
+			EXECUTE format('SELECT SUM((%I - $1) * (%I - $2)) FROM %s %s',
 						   cols[i], cols[j], data_tbl_name, data_condit)
 			INTO dot_product USING a_mean, b_mean;
 

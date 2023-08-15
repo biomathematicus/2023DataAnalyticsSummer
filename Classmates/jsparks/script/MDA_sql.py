@@ -186,10 +186,10 @@ run_and_store(topic)
 # print(fetch_data(conditions[0], 20, False))
 # fetch_computations()
 # store_computations('test')
-load_computations('test')
-print(m)
-print(S_i)
-print(m_i)
+# load_computations('test')
+# print(m)
+# print(S_i)
+# print(m_i)
 
 '''
 {pop_var_from_cols}
